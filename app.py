@@ -24,8 +24,18 @@ from routes.clientes_routes import clientes_bp
 from routes.produtos_routes import produtos_bp
 from routes.notas_routes import notas_bp
 
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app, resources={
+    r"/*": {
+        "origins": "*",
+        "allow_headers": ["Content-Type", "Authorization"],
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    }
+})
+
 
 
 # Inicializa o banco de dados.
